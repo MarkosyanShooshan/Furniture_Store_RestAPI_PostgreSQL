@@ -70,8 +70,9 @@ Open http://127.0.0.1:8000/ in your browser.
 
 📡 API Endpoints
 
-Resource,        Endpoint,          Method,          Description
-Products,       /api/products/,      GET,      List all furniture products
-Product Detail, /api/products/{id}/, GET,      Retrieve specific product details
-Categories,     /api/categories/,    GET,      List all furniture categories
-Admin Panel,    /admin/,             GET,      Manage catalog data via Django Admin
+․Resource,        ․Endpoint,          ․Method,          ․Description
+
+․Products,        /api/products/,      GET,      List all furniture products
+․Product Detail,  /api/products/{id}/, GET,      Retrieve specific product details
+․Categories,      /api/categories/,    GET,      List all furniture categories
+․Admin Panel,      /admin/,             GET,      Manage catalog data via Django Admin
