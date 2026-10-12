@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oak & Home | Furniture Catalog</title>
+    <link rel="stylesheet" href="{% static 'catalog/styles.css' %}">
+</head>
+<body>
+    <!-- Header-ը նույնն է -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="{% url 'catalog:product_list' %}">
+                <span class="brand-mark">O</span>
+                <span>
+                    <strong>Oak & Home</strong>
+                    <small>Furniture collection</small>
+                </span>
+            </a>
+            <nav class="main-nav">
+                <a href="{% url 'catalog:product_list' %}">Catalog</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <!-- Hero կոնտենտը -->
+            <div class="container hero-content">
+                <p class="eyebrow light">New collection</p>
+                <h1>Furniture that makes a house feel like home</h1>
+                <p>Discover comfortable and elegant furniture created for modern spaces.</p>
+                <a class="button" href="#catalog">View collection</a>
+            </div>
+        </section>
+
+        <section class="catalog-section" id="catalog">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Our products</p>
+                        <h2>Furniture catalog</h2>
+                    </div>
+                    <p>Choose a product to see its complete information.</p>
+                </div>
+
+                <div class="product-grid">
+                    {% for product in products %}
+                    <article class="product-card">
+                        <a class="product-image-wrap" href="{% url 'catalog:product_detail' product.slug %}">
+                            <!-- Ստուգում ենք արդյոք նկար կա, և տպում URL-ը -->
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% endif %}
+                            
+                            {% if product.in_stock %}
+                                <span class="stock-badge">In stock</span>
+                            {% else %}
+                                <span class="stock-badge out">Out of stock</span>
+                            {% endif %}
+                        </a>
+                        <div class="product-content">
+                            <!-- Տպում ենք տեքստային category դաշտը -->
+                            <p class="product-category">{{ product.category.name }}</p>
+                            <h3><a href="{% url 'catalog:product_detail' product.slug %}">{{ product.name }}</a></h3>
+                            <p class="summary">{{ product.short_description }}</p>
+                            <div class="product-footer">
+                                <!-- Գինը (Decimal) -->
+                                <strong>{{ product.price }} AMD</strong>
+                                <a href="{% url 'catalog:product_detail' product.slug %}">View details →</a>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer-ը -->
+    <footer class="site-footer" id="about">
+        <div class="container footer-inner">
+            <div>
+                <h2>Oak & Home</h2>
+                <p>Comfortable furniture made for everyday living.</p>
+            </div>
+            <p>© 2026 Oak & Home</p>
+        </div>
+    </footer>
+</body>
+</html>

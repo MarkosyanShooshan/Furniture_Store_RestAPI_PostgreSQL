@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} | Oak & Home</title>
+    <link rel="stylesheet" href="{% static 'catalog/styles.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="{% url 'catalog:product_list' %}">
+                <span class="brand-mark">O</span>
+                <span>
+                    <strong>Oak & Home</strong>
+                    <small>Furniture collection</small>
+                </span>
+            </a>
+            <nav class="main-nav">
+                <a href="{% url 'catalog:product_list' %}">Catalog</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="detail-section">
+        <div class="container">
+            <a class="back-link" href="{% url 'catalog:product_list' %}">← Back to catalog</a>
+
+            <article class="detail-card">
+                <div class="detail-image-wrap">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% endif %}
+                </div>
+
+                <div class="detail-content">
+                    <p class="eyebrow">{{ product.category }}</p>
+                    <h1>{{ product.name }}</h1>
+                    <p class="detail-price">{{ product.price }} AMD</p>
+                    
+                    {% if product.in_stock %}
+                        <p class="availability">● Available in stock</p>
+                    {% else %}
+                        <p class="availability" style="color: #8b625d;">● Out of stock</p>
+                    {% endif %}
+                    
+                    <p class="description">{{ product.description }}</p>
+
+                    <dl class="specs">
+                        <div><dt>Material</dt><dd>{{ product.material }}</dd></div>
+                        <!-- Ցուցադրում ենք գույնը տեքստով կամ նույնիսկ փոքրիկ գունային արկղիկով -->
+                        <div>
+                            <dt>Color</dt>
+                            <dd style="display: flex; align-items: center; gap: 8px;">
+                                <span style="display:inline-block; width: 16px; height: 16px; border-radius: 50%; background-color: {{ product.color }}; border: 1px solid #ccc;"></span>
+                                {{ product.color }}
+                            </dd>
+                        </div>
+                        <div><dt>Category</dt><dd>{{ product.category }}</dd></div>
+                    </dl>
+
+                    <a class="button" href="mailto:hello@oakandhome.am">Ask about this product</a>
+
+                  
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="about">
+        <div class="container footer-inner">
+            <div>
+                <h2>Oak & Home</h2>
+                <p>Comfortable furniture made for everyday living.</p>
+            </div>
+            <p>© 2026 Oak & Home</p>
+        </div>
+    </footer>
+</body>
+</html>
