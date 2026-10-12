@@ -29,8 +29,9 @@ Follow these steps to run the project locally on your machine:
 
 ### 1. Clone the Repository
 
-git clone https://https://github.com/MarkosyanShooshan/Furniture_Store_REST API_PostgreSQL.git
-cd Furniture_Store_REST API_PostgreSQL
+git clone https://https://github.com/MarkosyanShooshan/Furniture_Store_RESTAPI_PostgreSQL.git
+
+cd Furniture_Store_RESTAPI_PostgreSQL
 
 
 
