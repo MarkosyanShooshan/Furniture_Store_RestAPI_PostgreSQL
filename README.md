@@ -69,6 +69,7 @@ python manage.py runserver
 Open http://127.0.0.1:8000/ in your browser.
 
 📡 API Endpoints
+
 Resource,        Endpoint,          Method,          Description
 Products,       /api/products/,      GET,      List all furniture products
 Product Detail, /api/products/{id}/, GET,      Retrieve specific product details
