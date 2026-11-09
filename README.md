@@ -79,3 +79,6 @@ Open http://127.0.0.1:8000/ in your browser.
 ․Categories,      /api/categories/,    GET,      List all furniture categories
 
 ․Admin Panel,      /admin/,             GET,      Manage catalog data via Django Admin
+
+
+<!-- Test feature branch for Git practice -->
